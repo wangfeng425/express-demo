@@ -9,7 +9,7 @@ node_modules
 
 ./node_modules/
 
+node_modules/
+
 .DS_Store
 node_modules/
-node_modules____webpack_v3/
-node_modules____webpack_v4/
