@@ -1,0 +1,68 @@
+<html>
+	<head></head>
+	<body>
+		<div class="page-login">
+      <div class="user-name flex-sa">
+        <span class="inline-block w80 tar">用户名：</span>
+        <input id="name" type="text" />
+      </div>
+      <div class="password flex-sa mt10">
+        <span class="inline-block w80 tar">密码：</span>
+        <input id="password" type="text" />
+      </div>
+      <div class="mt10 ml30">
+        <button id="login" onclick="login">登 录</button>
+      </div>
+    </div>
+    <style>
+      .page-login {
+        width: 300px
+      }
+      .flex-sa {
+        display: flex;
+        justify-content: space-around;
+      }
+      .inline-block {
+        display: inline-block;
+      }
+      .w80 {
+        width: 80px;
+      }
+      .tar {
+        text-align: right;
+      }
+      .mt10 {
+        margin-top: 10px;
+      }
+      .ml30 {
+        margin-left: 30px;
+      }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+		<script type="text/javascript" >
+      $('#login').click(() => {
+        let userName = $('#name').val();
+        let password = $('#password').val();
+        let params = {
+          name: userName,
+          password: password
+        }
+        $.ajax({
+          url: '/login',
+          type: 'post',
+          data: params,
+          success:function(data,status){
+						if (data.code === 10000) {
+              alert("登录成功")
+            } else {
+              alert(data.msg)
+            }
+					},
+					error:function(data,err){
+						console.log(data, err);
+					}
+        })
+      })
+		</script>
+	</body>
+</html>
